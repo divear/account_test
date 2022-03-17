@@ -1,6 +1,9 @@
 :root {
-    --bg: black;
-    --fr: white;
+    --bg: #e8e9eb;
+    --fr: #313638;
+    --frSec: #e0dfd5;
+    --main: #f7be89;
+    --sec: #f06543;
 }
 
 html,
@@ -10,7 +13,7 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
         Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     background-color: var(--bg);
-    color: var(--fr);
+    /* color: var(--fr); */
 }
 
 a {
@@ -20,4 +23,79 @@ a {
 
 * {
     box-sizing: border-box;
+}
+.no {
+    display: none;
+}
+button {
+    background-color: var(--sec);
+    border-radius: 0.5vw;
+    border: none;
+    cursor: pointer;
+}
+button:hover {
+    filter: contrast(110%);
+}
+label {
+    font-size: 2rem !important;
+}
+
+/* nav */
+.wave {
+    position: fixed;
+    top: -5vh;
+    z-index: -1;
+    height: 20%;
+    pointer-events: none;
+}
+
+.nav > h1 {
+    font-size: 3.5rem;
+    margin: 0%;
+    padding: 0.1vw;
+}
+.navText {
+    z-index: 999;
+    color: var(--fr);
+    position: fixed;
+}
+.floatRight {
+    float: right;
+}
+.accountMin {
+    position: fixed;
+    top: 0;
+    right: 1vw;
+}
+.pfp {
+    width: 2.3vw;
+    border-radius: 100%;
+    margin: 0 0vw 0 1vw;
+}
+.signInButton {
+    font-size: 3rem;
+    top: 1%;
+    right: 1%;
+}
+
+/* main content */
+.content {
+    z-index: -3;
+    position: absolute;
+    top: 20%;
+    margin: 10vh 1vw;
+}
+
+/* sign up */
+
+.signUpForm > * {
+    margin: 0 5vw;
+    font-size: 4rem;
+    display: block;
+}
+
+.smallButton {
+    font-size: 2rem;
+    float: right;
+    margin-top: 2vw;
 }
