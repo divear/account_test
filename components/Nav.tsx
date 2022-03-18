@@ -5,12 +5,14 @@ const isWeb = typeof window !== "undefined";
 
 function Nav() {
     const [hasAccount, setHasAccount] = useState(false);
-    isWeb && console.log(window.scrollX);
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
 
-    isWeb &&
-        useEffect(() => {
-            console.log(window.scrollX);
-        }, [window.screenX]);
+    useEffect(() => {
+        setHasAccount(!!localStorage.getItem("username"));
+        setUsername(`${localStorage.getItem("username")}`); //awful hack but kinda javascript's fault
+        setEmail(`${localStorage.getItem("email")}`);
+    }, []);
 
     return (
         <div className="nav">
@@ -18,7 +20,7 @@ function Nav() {
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
                     <path
                         fill="#f7be89"
-                        fill-opacity="1"
+                        fillOpacity="1"
                         d="M0,224L48,197.3C96,171,192,117,288,96C384,75,480,85,576,96C672,107,768,117,864,133.3C960,149,1056,171,1152,170.7C1248,171,1344,149,1392,138.7L1440,128L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
                     ></path>
                 </svg>
@@ -30,9 +32,10 @@ function Nav() {
 
             <div
                 className={hasAccount ? "accountMin navText floatRight" : "no"}
+                title={email}
             >
                 <h1>
-                    Petr
+                    {username}
                     <img
                         className="pfp"
                         src="https://i.redd.it/hgi7glszzul81.jpg"
@@ -43,11 +46,7 @@ function Nav() {
             <Link href={"/signup"}>
                 <button
                     className={
-                        isWeb &&
-                        !hasAccount &&
-                        window.location.pathname !== "/signup"
-                            ? "navText floatRight signInButton"
-                            : "no"
+                        !hasAccount ? "navText floatRight signInButton" : "no"
                     }
                 >
                     Sign up
