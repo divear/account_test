@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import AccountModal from "./AccountModal";
 
 const isWeb = typeof window !== "undefined";
 
@@ -7,11 +8,14 @@ function Nav() {
     const [hasAccount, setHasAccount] = useState(false);
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
+    const [modal, setModal] = useState(false);
+    const [imgLink, setImgLink] = useState("");
 
     useEffect(() => {
         setHasAccount(!!localStorage.getItem("username"));
         setUsername(`${localStorage.getItem("username")}`); //awful hack but kinda javascript's fault
         setEmail(`${localStorage.getItem("email")}`);
+        setImgLink(`${localStorage.getItem("pfp")}`);
     }, []);
 
     return (
@@ -30,17 +34,18 @@ function Nav() {
                 <h1 className="navText">Accountest</h1>
             </Link>
 
+            <div className={modal ? "userModal" : "no"}>
+                <AccountModal />
+            </div>
+
             <div
                 className={hasAccount ? "accountMin navText floatRight" : "no"}
                 title={email}
+                onClick={() => setModal(!modal)}
             >
                 <h1>
                     {username}
-                    <img
-                        className="pfp"
-                        src="https://i.redd.it/hgi7glszzul81.jpg"
-                        alt=""
-                    />
+                    <img className="pfp" src={imgLink} alt="" />
                 </h1>
             </div>
             <Link href={"/signup"}>
