@@ -4,6 +4,7 @@
     --frSec: #e0dfd5;
     --main: #f7be89;
     --sec: #f06543;
+    --red: #df1253;
 }
 
 html,
@@ -60,7 +61,10 @@ label {
     position: fixed;
 }
 .floatRight {
-    float: right;
+    float: right !important;
+}
+.floatLeft {
+    float: left !important;
 }
 .accountMin {
     position: fixed;
@@ -77,6 +81,12 @@ label {
     font-size: 3rem;
     top: 1%;
     right: 1%;
+}
+.red {
+    background-color: var(--red);
+    font-size: 3rem;
+    position: absolute;
+    bottom: 3%;
 }
 
 /* main content */
@@ -102,6 +112,7 @@ label {
     padding: 0.2vw;
 }
 
+/* modal */
 .userModal {
     position: fixed;
     top: 10%;
@@ -110,9 +121,10 @@ label {
     padding: 1%;
     border-radius: 2vw;
 }
-.userModal > * {
+.userModal > input {
     display: block;
     font-size: 2rem;
+    margin: 1rem;
 }
 .userModal > label {
     font-size: 1.5rem !important;

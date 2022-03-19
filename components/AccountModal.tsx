@@ -25,7 +25,7 @@ function AccountModal() {
         setUsername(`${localStorage.getItem("username")}`);
         setImgLink(
             localStorage.getItem("pfp") ||
-                "https://ae01.alicdn.com/kf/Hfaff95b4731e43918b690931922ef12aM/2021-Men-Harajuku-Hoodies-Sweatshirts-Oversized-2020-Men-Women-Streetwear-Black-Hoodie-Male-Hiphop-Winter-Basic.jpg_Q90.jpg_.webp"
+                "https://archive.org/services/img/twitter-default-pfp"
         );
     }, []);
 
@@ -54,6 +54,11 @@ function AccountModal() {
         setUsername(e.target.value);
         localStorage.setItem("username", username);
     }
+
+    function signOut() {
+        localStorage.clear();
+    }
+
     return (
         <form className="userModal">
             <label htmlFor="username">Change username</label>
@@ -81,8 +86,13 @@ function AccountModal() {
                 type="file"
                 onChange={(e) => changeImg(e)}
             />
+            <br />
 
             <button className="floatRight smallButton">save</button>
+
+            <button onClick={signOut} className="red floatLeft">
+                sign out
+            </button>
         </form>
     );
 }
