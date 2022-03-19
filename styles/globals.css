@@ -25,7 +25,7 @@ a {
     box-sizing: border-box;
 }
 .no {
-    display: none;
+    display: none !important;
 }
 button {
     background-color: var(--sec);
@@ -66,6 +66,7 @@ label {
     position: fixed;
     top: 0;
     right: 1vw;
+    cursor: pointer;
 }
 .pfp {
     width: 2.3vw;
@@ -115,4 +116,12 @@ label {
 }
 .userModal > label {
     font-size: 1.5rem !important;
+}
+.choosePfp {
+    border-radius: 100%;
+    max-width: 20vw;
+}
+.choosePfp:hover {
+    filter: grayscale(80%);
+    cursor: pointer;
 }
