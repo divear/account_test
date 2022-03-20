@@ -124,7 +124,7 @@ label {
 .userModal > input {
     display: block;
     font-size: 2rem;
-    margin: 1rem;
+    margin: 1xrem;
 }
 .userModal > label {
     font-size: 1.5rem !important;

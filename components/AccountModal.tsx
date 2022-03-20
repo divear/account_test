@@ -37,6 +37,7 @@ function AccountModal() {
         }
     }
     function changeImg(e: any) {
+        console.log(username);
         const tempImg = e.target.files[0];
         setImg(tempImg);
         localStorage.setItem(
@@ -52,7 +53,7 @@ function AccountModal() {
 
     function change(e: any) {
         setUsername(e.target.value);
-        localStorage.setItem("username", username);
+        localStorage.setItem("username", e.target.value);
     }
 
     function signOut() {
