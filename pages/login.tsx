@@ -1,28 +1,19 @@
 import React, { useState } from "react";
 
-function singUp() {
+function login() {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    function submit(e: any) {
-        e.preventDefault();
+    function submit() {
         localStorage.setItem("username", username);
         localStorage.setItem("email", email);
     }
 
     return (
         <div className="content">
-            <h1>Create a new account</h1>
+            <h1>Log in to your existing account</h1>
             <form className="signUpForm" action="/">
-                <label htmlFor="username">Username</label>
-                <input
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    type="text"
-                    id="username"
-                />
-
                 <label htmlFor="email">Email</label>
                 <input
                     value={email}
@@ -40,7 +31,7 @@ function singUp() {
                     id="password"
                 />
 
-                <button onClick={(e) => submit(e)} className="smallButton">
+                <button onClick={submit} className="smallButton">
                     Sign up
                 </button>
             </form>
@@ -48,4 +39,4 @@ function singUp() {
     );
 }
 
-export default singUp;
+export default login;

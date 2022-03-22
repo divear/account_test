@@ -15,7 +15,12 @@ function Nav() {
         setHasAccount(!!localStorage.getItem("username"));
         setUsername(`${localStorage.getItem("username")}`); //awful hack but kinda javascript's fault
         setEmail(`${localStorage.getItem("email")}`);
-        setImgLink(`${localStorage.getItem("pfp")}`);
+        setImgLink(
+            `${
+                localStorage.getItem("pfp") ||
+                "https://archive.org/services/img/twitter-default-pfp"
+            }`
+        );
     }, []);
 
     return (
@@ -50,11 +55,17 @@ function Nav() {
             </div>
             <Link href={"/signup"}>
                 <button
-                    className={
-                        !hasAccount ? "navText floatRight signInButton" : "no"
-                    }
+                    className={!hasAccount ? "floatRight signInButton" : "no"}
                 >
                     Sign up
+                </button>
+            </Link>
+
+            <Link href={"/login"}>
+                <button
+                    className={!hasAccount ? "floatRight signInButton" : "no"}
+                >
+                    Log in
                 </button>
             </Link>
         </div>

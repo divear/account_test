@@ -79,8 +79,7 @@ label {
 }
 .signInButton {
     font-size: 3rem;
-    top: 1%;
-    right: 1%;
+    margin: 0.5vw;
 }
 .red {
     background-color: var(--red);
