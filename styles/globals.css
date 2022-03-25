@@ -136,3 +136,8 @@ label {
     filter: grayscale(80%);
     cursor: pointer;
 }
+.error {
+    color: var(--red);
+    font-size: 2rem;
+    height: 0;
+}

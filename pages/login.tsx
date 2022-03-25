@@ -1,13 +1,36 @@
-import React, { useState } from "react";
+import React, { NewLifecycle, useState } from "react";
 
 function login() {
-    const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [errorCode, setErrorCode] = useState("");
 
-    function submit() {
-        localStorage.setItem("username", username);
+    function submit(e: any) {
         localStorage.setItem("email", email);
+        e.preventDefault();
+        if (!email && !password) {
+            setErrorCode("Email and password is mandatory");
+            return;
+        } else if (email.length >= 3000) {
+            setErrorCode("Zpráva je moc dlouhá");
+            return;
+        }
+
+        (async function () {
+            const Rbody = { body };
+            const Rusername = { username };
+            const Rgenre = { genre };
+
+            localStorage.setItem("username", username);
+
+            const arr = [Rbody, Rusername, Rgenre];
+            const response = await fetch(`${serverDomain}drby`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(arr),
+            });
+            window.location.href = "/";
+        })();
     }
 
     return (
@@ -30,6 +53,8 @@ function login() {
                     type="password"
                     id="password"
                 />
+
+                <h1 className="error">{errorCode}</h1>
 
                 <button onClick={submit} className="smallButton">
                     Sign up

@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 const isWeb = typeof window !== "undefined";
 
 function AccountModal() {
+    const serverDomain = process.env.NEXT_PUBLIC_SERVERDOMAIN;
     const [username, setUsername] = useState("");
     const [img, setImg] = useState<any>(null);
 
@@ -31,7 +32,7 @@ function AccountModal() {
 
     function chooseImg() {
         try {
-            inputFile.current && inputFile.current.dispatchEvent(clickEvent);
+            inputFile.current && inputFile.current.dispatchEvent(clickEvent); //ignore the error, it doesnt break anything, if it does, fix it
         } catch (error) {
             console.error(error);
         }
@@ -49,6 +50,20 @@ function AccountModal() {
         uploadBytes(spaceRef, tempImg).then(async (snapshot) => {
             window.location.reload();
         });
+
+        (async function () {
+            const Rpfp = { imgLink };
+            const Rusername = { username };
+
+            const arr = [Rusername, Rpfp];
+            const response = await fetch(`${serverDomain}users`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(arr),
+            });
+            window.location.href = "/";
+            console.log(response);
+        })();
     }
 
     function change(e: any) {
