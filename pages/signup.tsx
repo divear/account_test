@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function singUp() {
     const serverDomain = process.env.NEXT_PUBLIC_SERVERDOMAIN;
@@ -7,14 +7,14 @@ function singUp() {
     const [password, setPassword] = useState("");
     const [errorCode, setErrorCode] = useState("");
 
+    useEffect(() => {
+        username ? (window.location.href = "/") : null;
+    }, []);
+
     function submit(e: any) {
-        localStorage.setItem("email", email);
         e.preventDefault();
         if (!email && !password) {
             setErrorCode("Email and password are mandatory");
-            return;
-        } else if (email.length >= 3000) {
-            setErrorCode("The message is too long! ");
             return;
         }
 
@@ -26,12 +26,20 @@ function singUp() {
             localStorage.setItem("email", email);
             localStorage.setItem("username", username);
 
+            console.log(`${serverDomain}users`);
+
             const arr = [Remail, Rusername, Rpassword];
             const response = await fetch(`${serverDomain}users`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(arr),
             });
+
+            const id: any = await fetch(`${serverDomain}users-number`);
+            const jsonData = await id.json();
+
+            localStorage.setItem("id", jsonData[0].id);
+
             window.location.href = "/";
         })();
     }

@@ -7,11 +7,11 @@ function AccountModal() {
     const serverDomain = process.env.NEXT_PUBLIC_SERVERDOMAIN;
     const [username, setUsername] = useState("");
     const [img, setImg] = useState<any>(null);
+    const [id, setId] = useState<any>(null);
 
     const [imgLink, setImgLink] = useState("");
     const inputFile = useRef(null);
 
-    const [isMouseOnCard, setMouseIsOnCard] = useState(false);
     const clickEvent =
         isWeb &&
         new MouseEvent("click", {
@@ -19,7 +19,6 @@ function AccountModal() {
             bubbles: true,
             cancelable: false,
         });
-    let modalCardCoords;
     const storage = getStorage();
 
     useEffect(() => {
@@ -28,6 +27,7 @@ function AccountModal() {
             localStorage.getItem("pfp") ||
                 "https://archive.org/services/img/twitter-default-pfp"
         );
+        setId(`${localStorage.getItem("id")}`);
     }, []);
 
     function chooseImg() {
@@ -50,13 +50,15 @@ function AccountModal() {
         uploadBytes(spaceRef, tempImg).then(async (snapshot) => {
             window.location.reload();
         });
-
+    }
+    function submit(e: any) {
+        e.preventDefault();
         (async function () {
             const Rpfp = { imgLink };
             const Rusername = { username };
 
             const arr = [Rusername, Rpfp];
-            const response = await fetch(`${serverDomain}users`, {
+            const response = await fetch(`${serverDomain}users/${id}`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(arr),
@@ -76,7 +78,7 @@ function AccountModal() {
     }
 
     return (
-        <form className="userModal">
+        <form onSubmit={(e) => submit(e)} className="userModal">
             <label htmlFor="username">Change username</label>
             <input
                 value={username}

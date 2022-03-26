@@ -21,24 +21,6 @@ function Nav() {
                 "https://archive.org/services/img/twitter-default-pfp"
             }`
         );
-
-        (async function () {
-            const Remail = { email };
-            const Rusername = { username };
-            const Rpassword = { password };
-
-            localStorage.setItem("email", email);
-            localStorage.setItem("username", username);
-
-            const arr = [Rusername, Rpassword, Remail];
-            const response = await fetch(`${serverDomain}users`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(arr),
-            });
-            window.location.href = "/";
-            console.log(response);
-        })();
     }, []);
 
     return (
