@@ -4,115 +4,120 @@ import React, { useEffect, useRef, useState } from "react";
 const isWeb = typeof window !== "undefined";
 
 function AccountModal() {
-    const serverDomain = process.env.NEXT_PUBLIC_SERVERDOMAIN;
-    const [username, setUsername] = useState("");
-    const [img, setImg] = useState<any>(null);
-    const [id, setId] = useState<any>(null);
+	const serverDomain = process.env.NEXT_PUBLIC_SERVERDOMAIN;
+	const [username, setUsername] = useState("");
+	const [img, setImg] = useState<any>(null);
+	const [id, setId] = useState<any>(null);
 
-    const [imgLink, setImgLink] = useState("");
-    const inputFile: any = useRef(null);
+	const [imgLink, setImgLink] = useState("");
+	const inputFile: any = useRef(null);
 
-    const clickEvent =
-        isWeb &&
-        new MouseEvent("click", {
-            view: window,
-            bubbles: true,
-            cancelable: false,
-        });
-    const storage = getStorage();
+	const clickEvent =
+		isWeb &&
+		new MouseEvent("click", {
+			view: window,
+			bubbles: true,
+			cancelable: false,
+		});
+	const storage = getStorage();
 
-    useEffect(() => {
-        setUsername(`${localStorage.getItem("username")}`);
-        setImgLink(
-            localStorage.getItem("pfp") ||
-                "https://archive.org/services/img/twitter-default-pfp"
-        );
-        setId(`${localStorage.getItem("id")}`);
-    }, []);
+	useEffect(() => {
+		setUsername(`${localStorage.getItem("username")}`);
+		setImgLink(
+			localStorage.getItem("pfp") ||
+				"https://archive.org/services/img/twitter-default-pfp"
+		);
+		setId(`${localStorage.getItem("id")}`);
+	}, []);
 
-    function chooseImg() {
-        try {
-            inputFile.current && inputFile.current.dispatchEvent(clickEvent);
-        } catch (error) {
-            console.error(error);
-        }
-    }
-    function changeImg(e: any) {
-        console.log(username);
-        const tempImg = e.target.files[0];
-        setImg(tempImg);
-        localStorage.setItem(
-            "pfp",
-            `https://firebasestorage.googleapis.com/v0/b/accounts-8a8bf.appspot.com/o/pfp/${tempImg.name}?alt=media`
-        );
+	function chooseImg() {
+		try {
+			inputFile.current && inputFile.current.dispatchEvent(clickEvent);
+		} catch (error) {
+			console.error(error);
+		}
+	}
+	function changeImg(e: any) {
+		console.log(username);
+		let tempImg = e.target.files[0];
 
-        const spaceRef = ref(storage, `pfp/${tempImg && tempImg.name}`);
-        uploadBytes(spaceRef, tempImg).then(async (snapshot) => {
-            window.location.reload();
-        });
-    }
-    function submit(e: any) {
-        e.preventDefault();
-        (async function () {
-            const Rpfp = { imgLink };
-            const Rusername = { username };
+		//make url friendly
+		const friendlyUrlName = e.target.files[0].name
+			.replace(/[^.,a-zA-Z]/g, "")
+			.toLowerCase();
 
-            const arr = [Rusername, Rpfp];
-            const response = await fetch(`${serverDomain}users/${id}`, {
-                method: "PUT",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(arr),
-            });
-            window.location.href = "/";
-            console.log(response);
-        })();
-    }
+		setImg(tempImg);
+		localStorage.setItem(
+			"pfp",
+			`https://firebasestorage.googleapis.com/v0/b/accounts-8a8bf.appspot.com/o/pfp%2F${friendlyUrlName}?alt=media`
+		);
+		const spaceRef = ref(storage, `pfp/${tempImg && friendlyUrlName}`);
+		uploadBytes(spaceRef, tempImg).then(async (snapshot) => {
+			submit(e);
+		});
+	}
+	function submit(e: any) {
+		e.preventDefault();
+		(async function () {
+			const Rpfp = { imgLink };
+			const Rusername = { username };
 
-    function change(e: any) {
-        setUsername(e.target.value);
-        localStorage.setItem("username", e.target.value);
-    }
+			const arr = [Rusername, Rpfp];
+			const response = await fetch(`${serverDomain}users/${id}`, {
+				method: "PUT",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify(arr),
+			});
+			window.location.href = "/";
+			console.log(response);
+		})();
+	}
 
-    function signOut() {
-        localStorage.clear();
-    }
+	function change(e: any) {
+		setUsername(e.target.value);
+		localStorage.setItem("username", e.target.value);
+	}
 
-    return (
-        <form onSubmit={(e) => submit(e)} className="userModal">
-            <label htmlFor="username">Change username</label>
-            <input
-                value={username}
-                onChange={(e) => change(e)}
-                type="text"
-                id="username"
-            />
+	function signOut() {
+		localStorage.clear();
+	}
 
-            {/* source image */}
-            <img
-                onClick={() => chooseImg()}
-                id="choosePfp"
-                className="choosePfp"
-                src={imgLink}
-                alt="Vyber obrázek"
-            />
+	return (
+		<form onSubmit={(e) => submit(e)} className="userModal">
+			<label htmlFor="username">Change username</label>
+			<input
+				value={username}
+				onChange={(e) => change(e)}
+				type="text"
+				id="username"
+			/>
 
-            {/* invisible input */}
-            <input
-                className="no"
-                accept="image/png, image/jpg, image/jpeg"
-                ref={inputFile}
-                type="file"
-                onChange={(e) => changeImg(e)}
-            />
-            <br />
+			{/* source image */}
+			<img
+				onClick={() => chooseImg()}
+				id="choosePfp"
+				className="choosePfp"
+				src={imgLink}
+				alt="Vyber obrázek"
+			/>
 
-            <button className="floatRight smallButton">save</button>
+			{/* invisible input */}
+			<input
+				className="no"
+				accept="image/png, image/jpg, image/jpeg"
+				ref={inputFile}
+				type="file"
+				onChange={(e) => changeImg(e)}
+			/>
+			<br />
 
-            <button onClick={signOut} className="red floatLeft">
-                sign out
-            </button>
-        </form>
-    );
+			<button className="floatRight smallButton">save</button>
+
+			<button onClick={signOut} className="red floatLeft">
+				sign out
+			</button>
+		</form>
+	);
 }
 
 export default AccountModal;

@@ -1,143 +1,156 @@
 :root {
-    --bg: #e8e9eb;
-    --fr: #313638;
-    --frSec: #e0dfd5;
-    --main: #f7be89;
-    --sec: #f06543;
-    --red: #df1253;
+	--bg: #e8e9eb;
+	--fr: #313638;
+	--frSec: #e0dfd5;
+	--main: #f7be89;
+	--sec: #f06543;
+	--red: #df1253;
 }
 
 html,
 body {
-    padding: 0;
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-        Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    background-color: var(--bg);
-    /* color: var(--fr); */
+	padding: 0;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+	background-color: var(--bg);
+	/* color: var(--fr); */
 }
 
 a {
-    color: inherit;
-    text-decoration: none;
+	color: inherit;
+	text-decoration: none;
 }
 
 * {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 .no {
-    display: none !important;
+	display: none !important;
 }
 button {
-    background-color: var(--sec);
-    border-radius: 0.5vw;
-    border: none;
-    cursor: pointer;
+	background-color: var(--sec);
+	border-radius: 0.5vw;
+	border: none;
+	cursor: pointer;
 }
 button:hover {
-    filter: contrast(110%);
+	filter: contrast(110%);
 }
 label {
-    font-size: 2rem !important;
+	font-size: 2rem !important;
 }
 
 /* nav */
 .wave {
-    position: fixed;
-    top: -5vh;
-    z-index: -1;
-    height: 20%;
-    pointer-events: none;
+	position: fixed;
+	top: -5vh;
+	z-index: -1;
+	height: 20%;
+	pointer-events: none;
 }
 
 .nav > h1 {
-    font-size: 3.5rem;
-    margin: 0%;
-    padding: 0.1vw;
+	font-size: 3.5rem;
+	margin: 0%;
+	padding: 0.1vw;
 }
 .navText {
-    z-index: 999;
-    color: var(--fr);
-    position: fixed;
+	z-index: 999;
+	color: var(--fr);
+	position: fixed;
 }
 .floatRight {
-    float: right !important;
+	float: right !important;
 }
 .floatLeft {
-    float: left !important;
+	float: left !important;
 }
 .accountMin {
-    position: fixed;
-    top: 0;
-    right: 1vw;
-    cursor: pointer;
+	position: fixed;
+	top: 0;
+	right: 1vw;
+	cursor: pointer;
 }
 .pfp {
-    width: 2.3vw;
-    border-radius: 100%;
-    margin: 0 0vw 0 1vw;
+	width: 2.3vw;
+	border-radius: 100%;
+	margin: 0 0vw 0 1vw;
 }
 .signInButton {
-    font-size: 3rem;
-    margin: 0.5vw;
+	font-size: 3rem;
+	margin: 0.5vw;
 }
 .red {
-    background-color: var(--red);
-    font-size: 3rem;
-    position: absolute;
-    bottom: 3%;
+	background-color: var(--red);
+	font-size: 3rem;
+	position: absolute;
+	bottom: 3%;
 }
 
 /* main content */
 .content {
-    z-index: -3;
-    position: absolute;
-    top: 20%;
-    margin: 10vh 1vw;
+	z-index: -3;
+	position: absolute;
+	top: 20%;
+	margin: 10vh 1vw;
 }
 
 /* sign up */
 
 .signUpForm > * {
-    margin: 0 5vw;
-    font-size: 4rem;
-    display: block;
+	margin: 0 5vw;
+	font-size: 4rem;
+	display: block;
 }
 
 .smallButton {
-    font-size: 2.5rem;
-    float: right;
-    margin-top: 2vw;
-    padding: 0.2vw;
+	font-size: 2.5rem;
+	float: right;
+	margin-top: 2vw;
+	padding: 0.2vw;
 }
 
 /* modal */
 .userModal {
-    position: fixed;
-    top: 10%;
-    right: 1%;
-    background-color: var(--frSec);
-    padding: 1%;
-    border-radius: 2vw;
+	position: fixed;
+	top: 10%;
+	right: 1%;
+	background-color: var(--frSec);
+	padding: 1%;
+	border-radius: 2vw;
 }
 .userModal > input {
-    display: block;
-    font-size: 2rem;
-    margin: 1xrem;
+	display: block;
+	font-size: 2rem;
+	margin: 1xrem;
 }
 .userModal > label {
-    font-size: 1.5rem !important;
+	font-size: 1.5rem !important;
 }
 .choosePfp {
-    border-radius: 100%;
-    max-width: 20vw;
+	border-radius: 100%;
+	max-width: 20vw;
 }
 .choosePfp:hover {
-    filter: grayscale(80%);
-    cursor: pointer;
+	animation-name: grayscale;
+	animation-duration: 1s;
+	filter: grayscale(50%);
+	filter: blur(50%);
+	cursor: pointer;
+}
+@keyframes grayscale {
+	from {
+		filter: grayscale(0%);
+		filter: blur(0%);
+	}
+	to {
+		filter: grayscale(50%);
+		filter: blur(50%);
+	}
 }
 .error {
-    color: var(--red);
-    font-size: 2rem;
-    height: 0;
+	color: var(--red);
+	font-size: 2rem;
+	height: 0;
 }
