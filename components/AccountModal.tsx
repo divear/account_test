@@ -10,7 +10,7 @@ function AccountModal() {
     const [id, setId] = useState<any>(null);
 
     const [imgLink, setImgLink] = useState("");
-    const inputFile = useRef(null);
+    const inputFile: any = useRef(null);
 
     const clickEvent =
         isWeb &&
@@ -32,7 +32,7 @@ function AccountModal() {
 
     function chooseImg() {
         try {
-            inputFile.current && inputFile.current.dispatchEvent(clickEvent); //ignore the error, it doesnt break anything, if it does, fix it
+            inputFile.current && inputFile.current.dispatchEvent(clickEvent);
         } catch (error) {
             console.error(error);
         }
@@ -43,7 +43,7 @@ function AccountModal() {
         setImg(tempImg);
         localStorage.setItem(
             "pfp",
-            `https://firebasestorage.googleapis.com/v0/b/accounts-8a8bf.appspot.com/o/pfp%2F${tempImg.name}?alt=media`
+            `https://firebasestorage.googleapis.com/v0/b/accounts-8a8bf.appspot.com/o/pfp/${tempImg.name}?alt=media`
         );
 
         const spaceRef = ref(storage, `pfp/${tempImg && tempImg.name}`);
@@ -59,7 +59,7 @@ function AccountModal() {
 
             const arr = [Rusername, Rpfp];
             const response = await fetch(`${serverDomain}users/${id}`, {
-                method: "POST",
+                method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(arr),
             });
