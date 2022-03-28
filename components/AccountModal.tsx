@@ -1,5 +1,6 @@
 import { ref, getStorage, uploadBytes } from "./firebase.js";
 import React, { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 const isWeb = typeof window !== "undefined";
 
@@ -83,40 +84,47 @@ function AccountModal() {
 	}
 
 	return (
-		<form onSubmit={(e) => submit(e)} className="userModal">
-			<label htmlFor="username">Change username</label>
-			<input
-				value={username}
-				onChange={(e) => change(e)}
-				type="text"
-				id="username"
-			/>
+		<>
+			<form onSubmit={(e) => submit(e)} className="userModal">
+				<label htmlFor="username">Change username</label>
+				<input
+					value={username}
+					onChange={(e) => change(e)}
+					type="text"
+					id="username"
+				/>
 
-			{/* source image */}
-			<img
-				onClick={() => chooseImg()}
-				id="choosePfp"
-				className="choosePfp"
-				src={imgLink}
-				alt="Vyber obrázek"
-			/>
+				{/* source image */}
+				{imgLink && (
+					<Image
+						src={imgLink}
+						onClick={() => chooseImg()}
+						id="choosePfp"
+						className="choosePfp"
+						alt="Choose image"
+						onError={() => console.error("error in image")}
+						width={200}
+						height={200}
+					/>
+				)}
 
-			{/* invisible input */}
-			<input
-				className="no"
-				accept="image/png, image/jpg, image/jpeg"
-				ref={inputFile}
-				type="file"
-				onChange={(e) => changeImg(e)}
-			/>
-			<br />
+				{/* invisible input */}
+				<input
+					className="no"
+					accept="image/png, image/jpg, image/jpeg"
+					ref={inputFile}
+					type="file"
+					onChange={(e) => changeImg(e)}
+				/>
+				<br />
 
-			<button className="floatRight smallButton">save</button>
+				<button className="floatRight smallButton">save</button>
 
-			<button onClick={signOut} className="red floatLeft">
-				sign out
-			</button>
-		</form>
+				<button onClick={signOut} className="red floatLeft">
+					sign out
+				</button>
+			</form>
+		</>
 	);
 }
 

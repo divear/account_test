@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import AccountModal from "./AccountModal";
@@ -48,9 +49,16 @@ function Nav() {
 				title={email}
 				onClick={() => setModal(!modal)}
 			>
-				<h1>
-					{username}
-					<img className="pfp" src={imgLink} alt="" />
+				<h1 className="imgDiv">
+					{imgLink && (
+						<Image
+							width={50}
+							height={50}
+							className="pfp"
+							src={imgLink}
+							alt=""
+						/>
+					)}
 				</h1>
 			</div>
 			<Link href={"/signup"}>

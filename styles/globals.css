@@ -69,14 +69,16 @@ label {
 .accountMin {
 	position: fixed;
 	top: 0;
-	right: 1vw;
+	right: 1%;
 	cursor: pointer;
+	display: flex;
+	flex-direction: row-reverse;
 }
 .pfp {
-	width: 2.3vw;
+	text-align: right;
 	border-radius: 100%;
-	margin: 0 0vw 0 1vw;
 }
+
 .signInButton {
 	font-size: 3rem;
 	margin: 0.5vw;
@@ -131,6 +133,7 @@ label {
 .choosePfp {
 	border-radius: 100%;
 	max-width: 20vw;
+	padding: 1vh !important;
 }
 .choosePfp:hover {
 	animation-name: grayscale;
