@@ -10,7 +10,9 @@ function AccountModal() {
 	const [img, setImg] = useState<any>(null);
 	const [id, setId] = useState<any>(null);
 
-	const [imgLink, setImgLink] = useState("");
+	const [imgLink, setImgLink] = useState(
+		"https://firebasestorage.googleapis.com/v0/b/accounts-8a8bf.appspot.com/o/pfp%2Ftwitter-default-pfp.jpeg?alt=media"
+	);
 	const inputFile: any = useRef(null);
 
 	const clickEvent =
@@ -24,11 +26,15 @@ function AccountModal() {
 
 	useEffect(() => {
 		setUsername(`${localStorage.getItem("username")}`);
-		setImgLink(
-			localStorage.getItem("pfp") ||
-				"https://archive.org/services/img/twitter-default-pfp"
-		);
 		setId(`${localStorage.getItem("id")}`);
+		setImgLink(
+			`${
+				!localStorage.getItem("pfp") ||
+				localStorage.getItem("pfp") === "null"
+					? "https://firebasestorage.googleapis.com/v0/b/accounts-8a8bf.appspot.com/o/pfp%2Ftwitter-default-pfp.jpeg?alt=media"
+					: localStorage.getItem("pfp")
+			}`
+		);
 	}, []);
 
 	function chooseImg() {
@@ -97,7 +103,10 @@ function AccountModal() {
 				{/* source image */}
 				{imgLink && (
 					<Image
-						src={imgLink}
+						src={
+							imgLink ||
+							"https://firebasestorage.googleapis.com/v0/b/accounts-8a8bf.appspot.com/o/pfp%2Ftwitter-default-pfp.jpeg?alt=media"
+						}
 						onClick={() => chooseImg()}
 						id="choosePfp"
 						className="choosePfp"

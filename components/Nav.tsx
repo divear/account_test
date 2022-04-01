@@ -10,7 +10,9 @@ function Nav() {
 	const [username, setUsername] = useState("");
 	const [email, setEmail] = useState("");
 	const [modal, setModal] = useState(false);
-	const [imgLink, setImgLink] = useState("");
+	const [imgLink, setImgLink] = useState(
+		"https://firebasestorage.googleapis.com/v0/b/accounts-8a8bf.appspot.com/o/pfp%2Ftwitter-default-pfp.jpeg?alt=media"
+	);
 
 	useEffect(() => {
 		setHasAccount(!!localStorage.getItem("username"));
@@ -18,8 +20,10 @@ function Nav() {
 		setEmail(`${localStorage.getItem("email")}`);
 		setImgLink(
 			`${
-				localStorage.getItem("pfp") ||
-				"https://archive.org/services/img/twitter-default-pfp"
+				!localStorage.getItem("pfp") ||
+				localStorage.getItem("pfp") === "null"
+					? "https://firebasestorage.googleapis.com/v0/b/accounts-8a8bf.appspot.com/o/pfp%2Ftwitter-default-pfp.jpeg?alt=media"
+					: localStorage.getItem("pfp")
 			}`
 		);
 	}, []);
@@ -55,7 +59,10 @@ function Nav() {
 							width={50}
 							height={50}
 							className="pfp"
-							src={imgLink}
+							src={
+								imgLink ||
+								"https://firebasestorage.googleapis.com/v0/b/accounts-8a8bf.appspot.com/o/pfp%2Ftwitter-default-pfp.jpeg?alt=media"
+							}
 							alt=""
 						/>
 					)}
