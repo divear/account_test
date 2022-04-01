@@ -191,8 +191,9 @@ label {
 	position: fixed;
 	background-color: var(--bgDark);
 	color: var(--white);
-	padding: 1%;
 	border-radius: 2vw;
+	padding: 1vw;
+	display: inline;
 }
 #usernameInput {
 	font-size: 2rem !important;
@@ -208,4 +209,16 @@ label {
 	font-size: 2rem !important;
 	float: right;
 	margin: 1vw 0 0 0;
+}
+.cancel {
+	position: absolute;
+	top: 1%;
+	right: 1%;
+	display: inline;
+	float: right;
+	cursor: pointer;
+	font-size: 2.5rem;
+}
+.cancel:hover {
+	color: var(--main);
 }
