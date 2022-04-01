@@ -182,4 +182,30 @@ label {
 }
 .new {
 	font-size: 2rem;
+	margin: 0 0 2vw 0;
+}
+.postModal {
+	z-index: 5;
+	left: 50%;
+	transform: translate(-50%, 0);
+	position: fixed;
+	background-color: var(--bgDark);
+	color: var(--white);
+	padding: 1%;
+	border-radius: 2vw;
+}
+#usernameInput {
+	font-size: 2rem !important;
+}
+
+.usernameInput {
+	font-size: 2.5rem;
+	padding: 0.2vw;
+	margin: 0;
+}
+
+.sendButton {
+	font-size: 2rem !important;
+	float: right;
+	margin: 1vw 0 0 0;
 }

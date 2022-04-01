@@ -2,9 +2,11 @@ import type { NextPage } from "next";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import PostModal from "../components/PostModal";
 
 const Home: NextPage = () => {
 	const [data, setData] = useState([]);
+	const [postModal, setPostModal] = useState(false);
 	const dev = process.env.NODE_ENV !== "production";
 
 	const serverDomain = dev ? "http://localhost:4000/" : "";
@@ -25,7 +27,15 @@ const Home: NextPage = () => {
 
 	return (
 		<div className="content ">
-			<button className="new floatRight">New post</button>
+			<div className={postModal ? "" : "no"}>
+				<PostModal />
+			</div>
+			<button
+				onClick={() => setPostModal(!postModal)}
+				className="new floatRight"
+			>
+				New post
+			</button>
 			<div className="posts ">
 				{data.map((d: any) => {
 					return (
