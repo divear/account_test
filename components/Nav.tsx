@@ -47,7 +47,7 @@ function Nav() {
 				<AccountModal />
 			</div>
 
-			<div className={hover ? "usernameInfo" : "no"}>
+			<div className={hover ? "usernameInfo" : "hide"}>
 				<h1>{username}</h1>
 			</div>
 

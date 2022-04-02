@@ -230,4 +230,33 @@ label {
 	border-radius: 1vw;
 	padding: 0% 5% 0 0.5%;
 	margin: 0.2% 0;
+	animation-name: slideRight;
+	animation-duration: 1s;
+}
+@keyframes slideRight {
+	from {
+		margin: -5% 0 0 0;
+	}
+	to {
+		margin: 0.2% 0;
+	}
+}
+.hide {
+	opacity: 0;
+	animation-name: hideDiv;
+	animation-duration: 1s;
+	background-color: var(--bgSec);
+	float: right;
+	border-radius: 1vw;
+	padding: 0% 5% 0 0.5%;
+}
+@keyframes hideDiv {
+	from {
+		margin: 0.2% 0;
+		opacity: 100%;
+	}
+	to {
+		margin: -5% 0 0 0;
+		opacity: 0%;
+	}
 }
