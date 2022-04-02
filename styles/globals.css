@@ -222,3 +222,12 @@ label {
 .cancel:hover {
 	color: var(--main);
 }
+
+.usernameInfo {
+	background-color: var(--bgSec);
+	float: right;
+	margin: 0 5vw 0 0;
+	border-radius: 1vw;
+	padding: 0% 5% 0 0.5%;
+	margin: 0.2% 0;
+}

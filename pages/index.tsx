@@ -5,6 +5,7 @@ import Image from "next/image";
 import PostModal from "../components/PostModal";
 
 const Home: NextPage = () => {
+	const [hasAccount, setHasAccount] = useState(false);
 	const [data, setData] = useState([]);
 	const [postModal, setPostModal] = useState(false);
 	const dev = process.env.NODE_ENV !== "production";
@@ -23,6 +24,7 @@ const Home: NextPage = () => {
 			}
 		}
 		getBlogs();
+		setHasAccount(!!localStorage.getItem("id"));
 	}, []);
 
 	return (
@@ -32,7 +34,7 @@ const Home: NextPage = () => {
 			</div>
 			<button
 				onClick={() => setPostModal(!postModal)}
-				className="new floatRight"
+				className={hasAccount ? "new floatRight" : "no"}
 			>
 				New post
 			</button>

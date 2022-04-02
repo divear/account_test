@@ -7,7 +7,6 @@ const isWeb = typeof window !== "undefined";
 function AccountModal() {
 	const serverDomain = process.env.NEXT_PUBLIC_SERVERDOMAIN;
 	const [username, setUsername] = useState("");
-	const [img, setImg] = useState<any>(null);
 	const [id, setId] = useState<any>(null);
 
 	const [imgLink, setImgLink] = useState(
@@ -45,7 +44,6 @@ function AccountModal() {
 		}
 	}
 	function changeImg(e: any) {
-		console.log(username);
 		let tempImg = e.target.files[0];
 
 		//make url friendly
@@ -53,11 +51,14 @@ function AccountModal() {
 			.replace(/[^.,a-zA-Z]/g, "")
 			.toLowerCase();
 
-		setImg(tempImg);
 		localStorage.setItem(
 			"pfp",
 			`https://firebasestorage.googleapis.com/v0/b/accounts-8a8bf.appspot.com/o/pfp%2F${friendlyUrlName}?alt=media`
 		);
+		setImgLink(
+			`https://firebasestorage.googleapis.com/v0/b/accounts-8a8bf.appspot.com/o/pfp%2F${friendlyUrlName}?alt=media`
+		);
+
 		const spaceRef = ref(storage, `pfp/${tempImg && friendlyUrlName}`);
 		uploadBytes(spaceRef, tempImg).then(async (snapshot) => {
 			submit(e);
@@ -75,7 +76,7 @@ function AccountModal() {
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(arr),
 			});
-			window.location.href = "/";
+			window.location.reload();
 			console.log(response);
 		})();
 	}

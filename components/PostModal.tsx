@@ -58,6 +58,7 @@ function PostModal() {
 				<button type="submit" className="sendButton">
 					send
 				</button>
+				<h3>{errorCode}</h3>
 			</form>
 		</div>
 	);

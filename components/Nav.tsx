@@ -3,9 +3,8 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import AccountModal from "./AccountModal";
 
-const isWeb = typeof window !== "undefined";
-
 function Nav() {
+	const [hover, setHover] = useState(false);
 	const [hasAccount, setHasAccount] = useState(false);
 	const [username, setUsername] = useState("");
 	const [email, setEmail] = useState("");
@@ -15,7 +14,7 @@ function Nav() {
 	);
 
 	useEffect(() => {
-		setHasAccount(!!localStorage.getItem("username"));
+		setHasAccount(!!localStorage.getItem("id"));
 		setUsername(`${localStorage.getItem("username")}`); //awful hack but kinda javascript's fault
 		setEmail(`${localStorage.getItem("email")}`);
 		setImgLink(
@@ -48,6 +47,10 @@ function Nav() {
 				<AccountModal />
 			</div>
 
+			<div className={hover ? "usernameInfo" : "no"}>
+				<h1>{username}</h1>
+			</div>
+
 			<div
 				className={hasAccount ? "accountMin navText floatRight" : "no"}
 				title={email}
@@ -64,6 +67,8 @@ function Nav() {
 								"https://firebasestorage.googleapis.com/v0/b/accounts-8a8bf.appspot.com/o/pfp%2Ftwitter-default-pfp.jpeg?alt=media"
 							}
 							alt=""
+							onMouseEnter={() => setHover(true)}
+							onMouseLeave={() => setHover(false)}
 						/>
 					)}
 				</h1>
