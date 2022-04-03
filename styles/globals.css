@@ -127,12 +127,12 @@ label {
 	border-radius: 2vw;
 	animation: userModal 1s;
 }
-.userModal > input {
+.userModal > form > input {
 	display: block;
 	font-size: 2rem;
 	margin: 1rem;
 }
-.userModal > label {
+.userModal > form > label {
 	font-size: 1.5rem !important;
 }
 @keyframes userModal {
