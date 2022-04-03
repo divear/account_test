@@ -27,6 +27,8 @@ function Nav() {
 		);
 	}, []);
 
+	console.log(modal);
+
 	return (
 		<div className="nav">
 			<div className="wave">
@@ -43,7 +45,7 @@ function Nav() {
 				<h1 className="navText">Accountest</h1>
 			</Link>
 
-			<div className={modal ? "userModal" : "no"}>
+			<div className={modal ? "userModal" : "hideUserModal"}>
 				<AccountModal />
 			</div>
 

@@ -29,7 +29,7 @@ const Home: NextPage = () => {
 
 	return (
 		<div className="content ">
-			<div className={postModal ? "" : "no"}>
+			<div className={postModal ? "postModal" : "hidePostModal"}>
 				<PostModal />
 			</div>
 			<button

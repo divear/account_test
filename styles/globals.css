@@ -134,6 +134,10 @@ label {
 .userModal > label {
 	font-size: 1.5rem !important;
 }
+.hideUserModal {
+	display: none !important;
+	opacity: 0;
+}
 .choosePfp {
 	border-radius: 100%;
 	max-width: 20vw;
@@ -194,6 +198,41 @@ label {
 	border-radius: 2vw;
 	padding: 1vw;
 	display: inline;
+	animation: slideMiddle 1s;
+}
+@keyframes slideMiddle {
+	from {
+		left: 0%;
+		opacity: 0;
+	}
+	to {
+		left: 50%;
+		opacity: 100%;
+	}
+}
+
+.hidePostModal {
+	animation: slideMiddleRight 1s;
+	opacity: 0;
+	left: 120%;
+	z-index: 5;
+	transform: translate(-50%, 0);
+	position: fixed;
+	background-color: var(--bgDark);
+	color: var(--white);
+	border-radius: 2vw;
+	padding: 1vw;
+	display: inline;
+}
+@keyframes slideMiddleRight {
+	from {
+		left: 50%;
+		opacity: 100%;
+	}
+	to {
+		left: 120%;
+		opacity: 0;
+	}
 }
 #usernameInput {
 	font-size: 2rem !important;
@@ -244,7 +283,7 @@ label {
 .hide {
 	opacity: 0;
 	animation-name: hideDiv;
-	animation-duration: 1s;
+	animation-duration: 0.5s;
 	background-color: var(--bgSec);
 	float: right;
 	border-radius: 1vw;

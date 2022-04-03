@@ -92,7 +92,7 @@ function AccountModal() {
 
 	return (
 		<>
-			<form onSubmit={(e) => submit(e)} className="userModal">
+			<form onSubmit={(e) => submit(e)}>
 				<label htmlFor="username">Change username</label>
 				<input
 					value={username}

@@ -34,7 +34,7 @@ function PostModal() {
 	}
 
 	return (
-		<div className="postModal">
+		<div>
 			<form onSubmit={(e) => submit(e)} action="">
 				<div className="top">
 					<h1
