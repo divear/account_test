@@ -125,18 +125,41 @@ label {
 	color: var(--white);
 	padding: 1%;
 	border-radius: 2vw;
+	animation: userModal 1s;
 }
 .userModal > input {
 	display: block;
 	font-size: 2rem;
-	margin: 1xrem;
+	margin: 1rem;
 }
 .userModal > label {
 	font-size: 1.5rem !important;
 }
+@keyframes userModal {
+	from {
+		right: -50%;
+	}
+	to {
+		right: 1%;
+	}
+}
 .hideUserModal {
-	display: none !important;
-	opacity: 0;
+	position: fixed;
+	top: 10%;
+	background-color: var(--bgDark);
+	color: var(--white);
+	padding: 1%;
+	border-radius: 2vw;
+	animation: hideUserModal 1s;
+	right: -50%;
+}
+@keyframes hideUserModal {
+	from {
+		right: 1%;
+	}
+	to {
+		right: -50%;
+	}
 }
 .choosePfp {
 	border-radius: 100%;
