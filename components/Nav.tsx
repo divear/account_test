@@ -45,7 +45,7 @@ function Nav() {
 				<h1 className="navText">Accountest</h1>
 			</Link>
 
-			<div className={modal ? "userModal" : "hideUserModal"}>
+			<div className={modal ? "um userModal" : "um hideUserModal"}>
 				<AccountModal />
 			</div>
 
