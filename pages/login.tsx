@@ -1,4 +1,4 @@
-import React, { NewLifecycle, useState } from "react";
+import React, { useState } from "react";
 
 function login() {
 	const serverDomain = process.env.NEXT_PUBLIC_SERVERDOMAIN;
@@ -7,7 +7,6 @@ function login() {
 	const [errorCode, setErrorCode] = useState("");
 
 	function submit(e: any) {
-		localStorage.setItem("email", email);
 		e.preventDefault();
 		if (!email && !password) {
 			setErrorCode("Email and password is mandatory");
@@ -21,8 +20,6 @@ function login() {
 			const Remail: any = { email };
 			const Rpassword = { password };
 
-			localStorage.setItem("email", email);
-
 			const response = await fetch(
 				`${serverDomain}users-login/${Remail.email}`,
 				{
@@ -34,7 +31,11 @@ function login() {
 			const jsonData = await response.json();
 			console.log(jsonData);
 			if (!jsonData.length) {
-				setErrorCode("Wrong email and password");
+				setErrorCode("Wrong password");
+				return;
+			} else if (!jsonData[0].id) {
+				setErrorCode("Wrong email");
+				console.log(jsonData);
 				return;
 			}
 			const data = jsonData[0];
