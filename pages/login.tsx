@@ -43,6 +43,7 @@ function login() {
 			localStorage.setItem("username", data.username);
 			localStorage.setItem("email", data.email);
 			localStorage.setItem("pfp", data.pfp);
+			localStorage.setItem("id", jsonData[0].id);
 
 			window.location.href = "/";
 		})();
