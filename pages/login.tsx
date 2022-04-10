@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function login() {
+function Login() {
 	const serverDomain = process.env.NEXT_PUBLIC_SERVERDOMAIN;
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -81,4 +81,4 @@ function login() {
 	);
 }
 
-export default login;
+export default Login;

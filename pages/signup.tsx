@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-function singUp() {
+function SingUp() {
 	const serverDomain = process.env.NEXT_PUBLIC_SERVERDOMAIN;
 	const [username, setUsername] = useState("");
 	const [email, setEmail] = useState("");
@@ -81,4 +81,4 @@ function singUp() {
 	);
 }
 
-export default singUp;
+export default SingUp;
