@@ -18,7 +18,6 @@ const Home: NextPage = () => {
 				const response = await fetch(serverDomain + "posts");
 				const jsonData = await response.json();
 				setData(jsonData.reverse());
-				console.log(jsonData);
 			} catch (error) {
 				console.log(error);
 			}
@@ -41,7 +40,7 @@ const Home: NextPage = () => {
 			<div className="posts ">
 				{data.map((d: any) => {
 					return (
-						<div className="post">
+						<div key={d.id} className="post">
 							<div className="user">
 								{d.pfp && (
 									<Image
