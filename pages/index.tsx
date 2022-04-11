@@ -8,9 +8,8 @@ const Home: NextPage = () => {
 	const [hasAccount, setHasAccount] = useState(false);
 	const [data, setData] = useState([]);
 	const [postModal, setPostModal] = useState(false);
-	const dev = process.env.NODE_ENV !== "production";
 
-	const serverDomain = dev ? "http://localhost:4000/" : "";
+	const serverDomain = process.env.NEXT_PUBLIC_SERVERDOMAIN;
 
 	useEffect(() => {
 		async function getBlogs() {
