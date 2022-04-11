@@ -42,7 +42,7 @@ function Nav() {
 			</div>
 
 			<Link href={"/"}>
-				<h1 className="navText">Accountest</h1>
+				<h1 className="navText">Postine</h1>
 			</Link>
 
 			<div className={modal ? "um userModal" : "um hideUserModal"}>
