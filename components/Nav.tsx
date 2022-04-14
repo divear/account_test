@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import AccountModal from "./AccountModal";
+import logo from "./imgs/logo.png";
 
 function Nav() {
 	const [hover, setHover] = useState(false);
@@ -34,6 +35,8 @@ function Nav() {
 			<div className="wave">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
 					<path
+						width={100}
+						height={100}
 						fill="#f7be89"
 						fillOpacity="1"
 						d="M0,224L48,197.3C96,171,192,117,288,96C384,75,480,85,576,96C672,107,768,117,864,133.3C960,149,1056,171,1152,170.7C1248,171,1344,149,1392,138.7L1440,128L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
@@ -42,7 +45,17 @@ function Nav() {
 			</div>
 
 			<Link href={"/"}>
-				<h1 className="navText">Postine</h1>
+				<div>
+					<h1 className="navText">
+						<Image
+							width={50}
+							height={50}
+							className="logo"
+							src={logo}
+						/>
+						Postine
+					</h1>
+				</div>
 			</Link>
 
 			<div className={modal ? "um userModal" : "um hideUserModal"}>

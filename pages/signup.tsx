@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 
 function SingUp() {
-	const serverDomain = process.env.NEXT_PUBLIC_SERVERDOMAIN;
+	const serverDomain =
+		process.env.NODE_ENV === "development"
+			? "http://localhost:4000/"
+			: process.env.NEXT_PUBLIC_SERVERDOMAIN;
 	const [username, setUsername] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");

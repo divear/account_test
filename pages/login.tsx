@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 
 function Login() {
-	const serverDomain = process.env.NEXT_PUBLIC_SERVERDOMAIN;
+	const serverDomain =
+		process.env.NODE_ENV === "development"
+			? "http://localhost:4000/"
+			: process.env.NEXT_PUBLIC_SERVERDOMAIN;
 	console.log(serverDomain);
 
 	const [email, setEmail] = useState("");

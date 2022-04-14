@@ -1,5 +1,4 @@
 import type { NextPage } from "next";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import PostModal from "../components/PostModal";
@@ -9,7 +8,12 @@ const Home: NextPage = () => {
 	const [data, setData] = useState([]);
 	const [postModal, setPostModal] = useState(false);
 
-	const serverDomain = process.env.NEXT_PUBLIC_SERVERDOMAIN;
+	console.log(process.env.NODE_ENV);
+
+	const serverDomain =
+		process.env.NODE_ENV === "development"
+			? "http://localhost:4000/"
+			: process.env.NEXT_PUBLIC_SERVERDOMAIN;
 
 	useEffect(() => {
 		async function getBlogs() {
