@@ -19,7 +19,6 @@ function PostModal() {
 		(async function () {
 			const Rid = { id };
 			const Rbody = { body };
-			console.log(Rid);
 
 			console.log(`${serverDomain}posts`);
 

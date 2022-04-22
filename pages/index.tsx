@@ -35,10 +35,11 @@ const Home: NextPage = () => {
 				<PostModal />
 			</div>
 			<button
+				title="Post something"
 				onClick={() => setPostModal(!postModal)}
 				className={hasAccount ? "new floatRight" : "no"}
 			>
-				New post
+				+
 			</button>
 			<div className="posts ">
 				{data.map((d: any) => {
@@ -67,6 +68,7 @@ const Home: NextPage = () => {
 								<i className="username" title={d.email}>
 									{d.username}
 								</i>
+								<span className="email">{d.email}</span>
 							</div>
 							<h2>{d.body}</h2>
 						</div>

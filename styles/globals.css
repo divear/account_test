@@ -17,7 +17,6 @@ body {
 	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
 		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 	background-color: var(--bg);
-	/* color: var(--fr); */
 }
 
 a {
@@ -46,7 +45,8 @@ label {
 
 /* nav */
 .wave {
-	position: absolute;
+	top: -10vh;
+	position: fixed;
 	z-index: -1;
 	pointer-events: none;
 }
@@ -196,14 +196,15 @@ label {
 /* main page post */
 .posts {
 	display: grid;
-	grid-template-columns: repeat(6, 1fr);
+	grid-template-columns: repeat(1, 1fr);
 	gap: 10px;
-	width: 100%;
+	width: 200%;
 }
 .post {
 	background-color: var(--bgSec);
-	border-radius: 2%;
+	border-radius: 2vw;
 	padding: 0.4vw;
+	width: 100%;
 }
 .username {
 	font-size: 1.5rem;
@@ -211,13 +212,10 @@ label {
 .date {
 	opacity: 50%;
 }
-.new {
-	font-size: 2rem;
-	margin: 0 0 1vw 0;
-}
+
 .postModal {
 	z-index: 5;
-	left: 50%;
+	left: 53.5%;
 	transform: translate(-50%, 0);
 	position: fixed;
 	background-color: var(--bgDark);
@@ -233,7 +231,7 @@ label {
 		opacity: 0;
 	}
 	to {
-		left: 50%;
+		left: 53.5%;
 		opacity: 100%;
 	}
 }
@@ -253,7 +251,7 @@ label {
 }
 @keyframes slideMiddleRight {
 	from {
-		left: 50%;
+		left: 53.5%;
 		opacity: 100%;
 	}
 	to {
@@ -326,4 +324,14 @@ label {
 		margin: -5% 0 0 0;
 		opacity: 0%;
 	}
+}
+.email {
+	opacity: 0.5;
+	margin: 0 0.5vw;
+}
+.new {
+	font-size: 3rem;
+	margin: 1vw;
+	position: fixed;
+	left: 35.5%;
 }
