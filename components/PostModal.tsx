@@ -52,6 +52,7 @@ function PostModal() {
 					id="usernameInput"
 					value={body}
 					onChange={(e) => setBody(e.target.value)}
+					autoFocus
 				/>
 				<br />
 				<button type="submit" className="sendButton">
