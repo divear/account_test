@@ -55,6 +55,10 @@ function PostModal() {
 					autoFocus
 				/>
 				<br />
+				<label htmlFor="video">Video:</label>
+				<br />
+				<input type="file"  />
+				<br />
 				<button type="submit" className="sendButton">
 					send
 				</button>

@@ -20,7 +20,8 @@
 		"**/*.ts",
 		"**/*.tsx",
 		"components/Meta.tsx",
-		"components/firebase.js"
+		"components/firebase.js",
+		"pages/index.tsx"
 	],
 	"exclude": ["node_modules"]
 }

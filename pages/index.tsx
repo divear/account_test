@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import PostModal from "../components/PostModal";
+import ReactPlayer from "react-player";
 
 const Home: NextPage = () => {
 	const [hasAccount, setHasAccount] = useState(false);
@@ -71,6 +72,7 @@ const Home: NextPage = () => {
 								<span className="email">{d.email}</span>
 							</div>
 							<h2>{d.body}</h2>
+							<button onClick={()=>window.location.href = `/video/${d.video_id}`}>watch</button>
 						</div>
 					);
 				})}

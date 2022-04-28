@@ -26,8 +26,6 @@ a {
 
 * {
 	box-sizing: border-box;
-	-ms-overflow-style: none;
-	scrollbar-width: none;
 }
 *::-webkit-scrollbar {
 	display: none;
@@ -36,6 +34,7 @@ a {
 	display: none !important;
 }
 button {
+	font-size: 2rem;
 	background-color: var(--sec);
 	border-radius: 0.5vw;
 	border: none;
@@ -47,7 +46,9 @@ button:hover {
 label {
 	font-size: 2rem !important;
 }
-
+a{
+	color:var(--red);
+}
 /* nav */
 .wave {
 	top: -10vh;
@@ -210,6 +211,8 @@ label {
 	border-radius: 2vw;
 	padding: 0.4vw;
 	width: 100%;
+	height: 200%;
+	margin: 1vw;
 }
 .username {
 	font-size: 1.5rem;
@@ -338,5 +341,5 @@ label {
 	font-size: 3rem;
 	margin: 1vw;
 	position: fixed;
-	left: 35.5%;
+	left: 40.5%;
 }
