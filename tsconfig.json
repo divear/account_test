@@ -22,6 +22,6 @@
 		"components/Meta.tsx",
 		"components/firebase.js",
 		"pages/index.tsx"
-	],
+, "pages/video/[id].jsx"	],
 	"exclude": ["node_modules"]
 }

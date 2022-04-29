@@ -112,7 +112,6 @@ function AccountModal() {
 						id="choosePfp"
 						className="choosePfp"
 						alt="Choose image"
-						onError={() => console.error("error in image")}
 						width={200}
 						height={200}
 					/>
