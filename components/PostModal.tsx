@@ -12,6 +12,7 @@ function PostModal() {
 	const [id, setId] = useState(0);
 	const [errorCode, setErrorCode] = useState("");
 	const [isLoading, setIsLoading] = useState(false)
+	let link : String
 	useEffect(() => {
 		setId(Number(`${localStorage.getItem("id")}`));
 	}, []);
@@ -22,43 +23,30 @@ function PostModal() {
 	
 	function changeImg(e: any) {
 		let tempVid = e.target.files[0];
-		console.log(tempVid);
 		
-		console.log("change vid");
 		
 
 		//make url friendly
 		const friendlyUrlName = e.target.files[0].name
-			.replace(/[^.,a-zA-Z]/g, "")
+			.replace(/[^.,a-zA-Z1-9]/g, "")
 			.toLowerCase();
-		console.log(friendlyUrlName);
 		
 
-		setVideoLink(
-			`https://firebasestorage.googleapis.com/v0/b/accounts-8a8bf.appspot.com/o/video%2F${friendlyUrlName}?alt=media`
-		);
 		const tempVidLink =`https://firebasestorage.googleapis.com/v0/b/accounts-8a8bf.appspot.com/o/video%2F${friendlyUrlName}?alt=media` 
-
-		console.log(tempVidLink);
+		setVideoLink(tempVidLink)
+		link = tempVidLink  
+		
 		
 
 		const spaceRef = ref(storage, `video/${tempVid && friendlyUrlName}`);
 
-		console.log(spaceRef);
-		console.log(tempVid);
 
 
 
 		
 		setIsLoading(true)
 		uploadBytes(spaceRef, tempVid).then(async (snapshot) => {
-			console.log(spaceRef);
-			console.log("HEFHSDFJKDJSLKFJKADLSFKJL");
-			
-			console.log(snapshot);
-			
-			
-			submit(e);
+			submit(e)
 		});
 	}
 
@@ -70,18 +58,22 @@ function PostModal() {
 		}
 
 		(async function () {
+			console.log(link);
 			const Rid = { id };
 			const Rbody = { body };
-			const Rvid = {videoLink}
-
-			console.log(`${serverDomain}posts`);
+			const Rvid = {link}
+			
 
 			const arr = [Rid, Rbody, Rvid];
+			console.log(arr);
+			
 			const response = await fetch(`${serverDomain}posts`, {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(arr),
 			});
+			console.log("posted");
+			
 			window.location.reload();
 		})();
 	}
@@ -116,11 +108,11 @@ function PostModal() {
 					onChange={(e) => changeImg(e)}
 					accept="video/*" />
 				<br />
-				<button type="submit" className="sendButton">
-					send
-				</button>
 				<h3>{errorCode}</h3>
-				<Image src={spinner} width={50} height={50} className={isLoading ? "" : "no"}></Image>
+				<div className={isLoading ? "" : "no"}>
+					<Image src={spinner} width={50} height={50}></Image>
+					<h1>This may take few minutes, please wait.</h1>
+				</div>
 			</form>
 		</div>
 	);

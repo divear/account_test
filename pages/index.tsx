@@ -1,15 +1,11 @@
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import PostModal from "../components/PostModal";
-import ReactPlayer from "react-player";
 
 const Home: NextPage = () => {
 	const [hasAccount, setHasAccount] = useState(false);
 	const [data, setData] = useState([]);
 	const [postModal, setPostModal] = useState(false);
-
-	console.log(process.env.NODE_ENV);
 
 	const serverDomain =
 		process.env.NODE_ENV === "development"
@@ -44,11 +40,13 @@ const Home: NextPage = () => {
 			</button>
 			<div className="posts ">
 				{data.map((d: any) => {
+					
+					
 					return (
 						<div key={d.id} className="post">
 							<div className="user">
 								{d.pfp && (
-									<Image
+									<img
 										src={
 											d.pfp ||
 											"https://firebasestorage.googleapis.com/v0/b/accounts-8a8bf.appspot.com/o/pfp%2Ftwitter-default-pfp.jpeg?alt=media"
@@ -56,9 +54,6 @@ const Home: NextPage = () => {
 										id="pfp"
 										className="pfp"
 										alt="pfp"
-										onError={() =>
-											console.error("error in image")
-										}
 										width={50}
 										height={50}
 									/>

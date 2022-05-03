@@ -30,7 +30,6 @@ function Nav() {
 		setWidth(window.innerWidth);
 	}, []);
 
-	console.log(modal);
 
 	return (
 		<div className="nav">
