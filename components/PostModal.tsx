@@ -7,7 +7,10 @@ const isWeb = typeof window !== "undefined";
 
 function PostModal() {
 	const [videoLink, setVideoLink] = useState("")
-	const serverDomain = process.env.NEXT_PUBLIC_SERVERDOMAIN;
+	const serverDomain =
+		process.env.NODE_ENV === "development"
+			? "http://localhost:4000/"
+			: process.env.NEXT_PUBLIC_SERVERDOMAIN;
 	const [body, setBody] = useState("");
 	const [id, setId] = useState(0);
 	const [errorCode, setErrorCode] = useState("");
@@ -19,6 +22,9 @@ function PostModal() {
 
 	
 	const storage = getStorage();
+	console.log(`${serverDomain}posts`);
+	
+
 
 	
 	function changeImg(e: any) {
@@ -58,7 +64,6 @@ function PostModal() {
 		}
 
 		(async function () {
-			console.log(link);
 			const Rid = { id };
 			const Rbody = { body };
 			const Rvid = {link}
@@ -66,6 +71,7 @@ function PostModal() {
 
 			const arr = [Rid, Rbody, Rvid];
 			console.log(arr);
+			
 			
 			const response = await fetch(`${serverDomain}posts`, {
 				method: "POST",

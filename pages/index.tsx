@@ -42,6 +42,7 @@ const Home: NextPage = () => {
 				{data.map((d: any) => {
 					
 					
+					
 					return (
 						<div key={d.id} className="post">
 							<div className="user">
@@ -67,7 +68,7 @@ const Home: NextPage = () => {
 								<span className="email">{d.email}</span>
 							</div>
 							<h2>{d.body}</h2>
-							<button onClick={()=>window.location.href = `/video/${d.video_id}`}>watch</button>
+							<button onClick={()=>window.location.href = `/video/${d.id}`}>watch</button>
 						</div>
 					);
 				})}
