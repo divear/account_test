@@ -39,10 +39,13 @@ function Video() {
 
   return (
     <div className='content'>
-      <h1>{data.body}</h1>
       <ReactPlayer 
+      className="video"
+      width={960}
+      height={540}
       url={data.video_id}
       controls />
+      <h1>{data.body}</h1>
     </div>
   )
 }

@@ -67,7 +67,6 @@ function Nav() {
 
 			<div
 				className={hasAccount ? "accountMin navText floatRight" : "no"}
-				title={email}
 				onClick={() => setModal(!modal)}
 			>
 				<h1 className="imgDiv">

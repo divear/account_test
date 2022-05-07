@@ -8,6 +8,7 @@ function AccountModal() {
 	const serverDomain = process.env.NEXT_PUBLIC_SERVERDOMAIN;
 	const [username, setUsername] = useState("");
 	const [id, setId] = useState<any>(null);
+	const [email, setEmail] = useState("email")
 
 	const [imgLink, setImgLink] = useState(
 		"https://firebasestorage.googleapis.com/v0/b/accounts-8a8bf.appspot.com/o/pfp%2Ftwitter-default-pfp.jpeg?alt=media"
@@ -34,6 +35,7 @@ function AccountModal() {
 					: localStorage.getItem("pfp")
 			}`
 		);
+		setEmail(`${localStorage.getItem("email")}`)
 	}, []);
 
 	function chooseImg() {
@@ -101,6 +103,7 @@ function AccountModal() {
 					id="username"
 				/>
 
+				<h2 className="emailBig">{email}</h2>
 				{/* source image */}
 				{imgLink && (
 					<Image
