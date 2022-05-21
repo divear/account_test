@@ -52,9 +52,8 @@ const Home: NextPage = () => {
 											d.pfp ||
 											"https://firebasestorage.googleapis.com/v0/b/accounts-8a8bf.appspot.com/o/pfp%2Ftwitter-default-pfp.jpeg?alt=media"
 										}
-										id="pfp"
 										className="pfp"
-										alt="pfp"
+										alt=""
 										width={50}
 										height={50}
 									/>

@@ -29,7 +29,16 @@ function Nav() {
 		);
 		setWidth(window.innerWidth);
 	}, []);
-
+	function dark() {
+		console.log("dark");
+		document.documentElement.style.setProperty("--bg", "#313638");
+		document.documentElement.style.setProperty("--fr", "#e8e9eb");
+		document.documentElement.style.setProperty("--black", "white");
+		document.documentElement.style.setProperty("--main", "#f06543");
+		document.documentElement.style.setProperty("--sec", "#a04b36");
+		document.documentElement.style.setProperty("--bgSec", "#a04b36");
+		document.documentElement.style.setProperty("--bgDark", "#888577");
+	}
 
 	return (
 		<div className="nav">
@@ -43,6 +52,16 @@ function Nav() {
 				</svg>
 			</div>
 
+			<div className="navText darkMode floatRight">
+				<h5>
+					darkmode
+					<input
+						onClick={dark}
+						className="darkSwitch"
+						type="checkbox"
+					/>
+				</h5>
+			</div>
 			<Link href={"/"}>
 				<div>
 					<h1 className="navText">

@@ -17,6 +17,7 @@ body {
 	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
 		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 	background-color: var(--bg);
+	color: var(--fr);
 }
 
 a {
@@ -24,7 +25,7 @@ a {
 	text-decoration: none;
 }
 .inner::-webkit-scrollbar {
-        display: none;
+	display: none;
 }
 
 * {
@@ -49,8 +50,8 @@ button:hover {
 label {
 	font-size: 2rem !important;
 }
-a{
-	color:var(--red);
+a {
+	color: var(--red);
 }
 /* nav */
 .wave {
@@ -346,7 +347,16 @@ a{
 	position: fixed;
 	left: 40.5%;
 }
-.emailBig{
+.emailBig {
 	font-size: 1rem;
-	margin: 0  0 0 1vw;
+	margin: 0 0 0 1vw;
+}
+.darkMode {
+	right: 20%;
+	width: 10%;
+	font-size: 2rem;
+}
+.darkSwitch {
+	width: 2vw;
+	padding: 1vw;
 }
