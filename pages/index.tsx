@@ -56,22 +56,21 @@ const Home: NextPage = () => {
 										height={50}
 									/>
 								)}
-								<h6 className="floatRight date">
-									{d.posted_date}
-								</h6>
 								<i className="username" title={d.email}>
 									{d.username}
 								</i>
+								<h6 className="date">{d.posted_date}</h6>
 								<span className="email">{d.email}</span>
 							</div>
 							<h2>{d.body}</h2>
-							<ReactPlayer
-								className="video"
-								width={288}
-								height={162}
-								url={d.video_id}
-								controls
-							/>
+							<div className="video">
+								<ReactPlayer
+									width={288}
+									height={162}
+									url={d.video_id}
+									controls
+								/>
+							</div>
 						</div>
 					);
 				})}

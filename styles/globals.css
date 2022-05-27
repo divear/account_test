@@ -214,7 +214,7 @@ a {
 .post {
 	border-radius: 2vw;
 	padding: 0.4vw;
-	width: 100%;
+	width: 50%;
 	height: 100%;
 	margin: 1vw;
 }
@@ -223,6 +223,7 @@ a {
 }
 .date {
 	opacity: 50%;
+	float: right;
 }
 
 .postModal {
@@ -345,7 +346,7 @@ a {
 	font-size: 3rem;
 	margin: 1vw;
 	position: fixed;
-	left: 40.5%;
+	left: 29%;
 }
 .emailBig {
 	font-size: 1rem;
@@ -359,4 +360,9 @@ a {
 .darkSwitch {
 	width: 2vw;
 	padding: 1vw;
+}
+.video {
+	border-radius: 1vw 1vw 1vw 1vw;
+	overflow: hidden;
+	z-index: 1;
 }
