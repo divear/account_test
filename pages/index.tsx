@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 import PostModal from "../components/PostModal";
+import ReactPlayer from "react-player";
 
 const Home: NextPage = () => {
 	const [hasAccount, setHasAccount] = useState(false);
@@ -40,9 +41,6 @@ const Home: NextPage = () => {
 			</button>
 			<div className="posts ">
 				{data.map((d: any) => {
-					
-					
-					
 					return (
 						<div key={d.id} className="post">
 							<div className="user">
@@ -67,7 +65,13 @@ const Home: NextPage = () => {
 								<span className="email">{d.email}</span>
 							</div>
 							<h2>{d.body}</h2>
-							<button className={d.video_id ? "" : "no"} onClick={()=>window.location.href = `/video/${d.id}`}>watch</button>
+							<ReactPlayer
+								className="video"
+								width={288}
+								height={162}
+								url={d.video_id}
+								controls
+							/>
 						</div>
 					);
 				})}

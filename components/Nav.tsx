@@ -38,9 +38,9 @@ function Nav() {
 		document.documentElement.style.setProperty("--black", "white");
 		document.documentElement.style.setProperty("--main", "#f06543");
 		document.documentElement.style.setProperty("--sec", "#f06543");
-		document.documentElement.style.setProperty("--bgSec", "#a04b36");
+		document.documentElement.style.setProperty("--bgSec", "#7a531c");
 
-		document.documentElement.style.setProperty("--bgDark", "#7a531c");
+		document.documentElement.style.setProperty("--bgDark", "#2e2321");
 	}
 
 	return (
@@ -55,6 +55,13 @@ function Nav() {
 				</svg>
 			</div>
 
+			<a href="/">
+				<h1 className="navText">
+					<Image width={50} height={50} className="logo" src={logo} />
+					Postine
+				</h1>
+			</a>
+
 			<div className="navText darkMode floatRight">
 				<h5>
 					darkmode
@@ -65,19 +72,6 @@ function Nav() {
 					/>
 				</h5>
 			</div>
-			<Link href={"/"}>
-				<div>
-					<h1 className="navText">
-						<Image
-							width={50}
-							height={50}
-							className="logo"
-							src={logo}
-						/>
-						Postine
-					</h1>
-				</div>
-			</Link>
 
 			<div className={modal ? "um userModal" : "um hideUserModal"}>
 				<AccountModal />

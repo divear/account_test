@@ -8,7 +8,7 @@
 	--red: #df1253;
 	--white: rgb(247, 245, 240);
 	--black: black;
-	--d: #7a531c;
+	--d: #2e2321;
 }
 
 html,
@@ -212,7 +212,6 @@ a {
 	width: 200%;
 }
 .post {
-	background-color: var(--bgSec);
 	border-radius: 2vw;
 	padding: 0.4vw;
 	width: 100%;
