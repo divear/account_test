@@ -207,9 +207,9 @@ a {
 /* main page post */
 .posts {
 	display: grid;
-	grid-template-columns: repeat(1, 1fr);
+	grid-template-columns: repeat(3, 1fr);
 	gap: 10px;
-	width: 200%;
+	width: 100%;
 }
 .post {
 	border-radius: 2vw;
@@ -346,7 +346,7 @@ a {
 	font-size: 3rem;
 	margin: 1vw;
 	position: fixed;
-	left: 29%;
+	right: 5%;
 }
 .emailBig {
 	font-size: 1rem;
