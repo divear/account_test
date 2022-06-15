@@ -29,6 +29,12 @@ function Nav() {
 			}`
 		);
 		setWidth(window.innerWidth);
+		if (
+			window.matchMedia &&
+			window.matchMedia("(prefers-color-scheme: dark)").matches
+		) {
+			dark();
+		}
 	}, []);
 	function dark() {
 		console.log("dark");
@@ -61,17 +67,6 @@ function Nav() {
 					Postine
 				</h1>
 			</a>
-
-			<div className="navText darkMode floatRight">
-				<h5>
-					darkmode
-					<input
-						onClick={dark}
-						className="darkSwitch"
-						type="checkbox"
-					/>
-				</h5>
-			</div>
 
 			<div className={modal ? "um userModal" : "um hideUserModal"}>
 				<AccountModal />
