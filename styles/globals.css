@@ -366,3 +366,6 @@ a {
 	overflow: hidden;
 	z-index: 1;
 }
+.videoTitle {
+	margin: 0.55rem;
+}

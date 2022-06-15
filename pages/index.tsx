@@ -113,7 +113,7 @@ const Home: NextPage = () => {
 								</h6>
 								<span className="email">{d.email}</span>
 							</div>
-							<h2>{d.body}</h2>
+							<h2 className="videoTitle">{d.body}</h2>
 							<div className="video">
 								<ReactPlayer
 									width={288}
