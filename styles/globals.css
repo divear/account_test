@@ -366,7 +366,13 @@ a {
 	overflow: hidden;
 	z-index: 1;
 	background-color: var(--black);
+	margin: 0.5vw;
 }
 .videoTitle {
 	margin: 0.55rem;
+}
+.trash {
+	position: fixed;
+	float: right !important;
+	cursor: pointer;
 }

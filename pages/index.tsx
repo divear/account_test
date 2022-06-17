@@ -2,6 +2,8 @@ import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 import PostModal from "../components/PostModal";
 import ReactPlayer from "react-player";
+import Image from "next/image";
+import trash from "../components/imgs/trash.png";
 
 const Home: NextPage = () => {
 	const [hasAccount, setHasAccount] = useState(false);
@@ -98,10 +100,17 @@ const Home: NextPage = () => {
 									controls
 								/>
 							</div>
+							<Image
+								onClick={() => deletePost(d.id)}
+								className="trash"
+								width={30}
+								height={30}
+								src={trash}
+							></Image>
 						</div>
 					);
 				})}
-			</div>{" "}
+			</div>
 			<h6>Lukáš Odehnal 2022</h6>
 		</div>
 	);
