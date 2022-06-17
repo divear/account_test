@@ -7,7 +7,7 @@
 	--sec: #f06543;
 	--red: #df1253;
 	--white: rgb(247, 245, 240);
-	--black: black;
+	--black: rgb(13, 13, 15);
 	--d: #2e2321;
 }
 
@@ -365,6 +365,7 @@ a {
 	border-radius: 1vw 1vw 1vw 1vw;
 	overflow: hidden;
 	z-index: 1;
+	background-color: var(--black);
 }
 .videoTitle {
 	margin: 0.55rem;

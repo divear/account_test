@@ -28,53 +28,31 @@ const Home: NextPage = () => {
 	}, []);
 
 	function timeAgo(time: any) {
-		time = +new Date(time.toLocaleString());
-		var time_formats = [
-			[60, "seconds", 1], // 60
-			[120, "1 minute ago", "1 minute from now"], // 60*2
-			[3600, "minutes", 60], // 60*60, 60
-			[7200, "1 hour ago", "1 hour from now"], // 60*60*2
-			[86400, "hours", 3600], // 60*60*24, 60*60
-			[172800, "Yesterday", "Tomorrow"], // 60*60*24*2
-			[604800, "days", 86400], // 60*60*24*7, 60*60*24
-			[1209600, "Last week", "Next week"], // 60*60*24*7*4*2
-			[2419200, "weeks", 604800], // 60*60*24*7*4, 60*60*24*7
-			[4838400, "Last month", "Next month"], // 60*60*24*7*4*2
-			[29030400, "months", 2419200], // 60*60*24*7*4*12, 60*60*24*7*4
-			[58060800, "Last year", "Next year"], // 60*60*24*7*4*12*2
-			[2903040000, "years", 29030400], // 60*60*24*7*4*12*100, 60*60*24*7*4*12
-			[5806080000, "Last century", "Next century"], // 60*60*24*7*4*12*100*2
-			[58060800000, "centuries", 2903040000], // 60*60*24*7*4*12*100*20, 60*60*24*7*4*12*100
-		];
-		var seconds = (+new Date() - time) / 1000,
-			token = "ago",
-			list_choice = 1;
+		// in miliseconds
+		var units: any = {
+			year: 24 * 60 * 60 * 1000 * 365,
+			month: (24 * 60 * 60 * 1000 * 365) / 12,
+			day: 24 * 60 * 60 * 1000,
+			hour: 60 * 60 * 1000,
+			minute: 60 * 1000,
+			second: 1000,
+		};
 
-		if (seconds == 0) {
-			return "Just now";
-		}
-		if (seconds < 0) {
-			seconds = Math.abs(seconds);
-			token = "from now";
-			list_choice = 2;
-		}
-		var i = 0,
-			format;
-		while ((format = time_formats[i++]))
-			if (seconds < format[0]) {
-				if (typeof format[2] == "string") return format[list_choice];
-				else
-					return (
-						Math.floor(seconds / format[2]) +
-						" " +
-						format[1] +
-						" " +
-						token
-					);
-			}
-		return time;
+		var rtf: any = new Intl.RelativeTimeFormat("en", { numeric: "auto" });
+
+		var getRelativeTime = (d1: any, d2: any = new Date()) => {
+			var elapsed = d1 - d2;
+
+			// "Math.abs" accounts for both "past" & "future" scenarios
+			for (let u in units)
+				if (Math.abs(elapsed) > units[u] || u == "second")
+					return rtf.format(Math.round(elapsed / units[u]), u);
+		};
+
+		// test-list of dates to compare with current date
+
+		return getRelativeTime(+new Date(time));
 	}
-	console.log(timeAgo("01/04/2022 15:20"));
 
 	return (
 		<div className="content ">
@@ -108,9 +86,7 @@ const Home: NextPage = () => {
 								<i className="username" title={d.email}>
 									{d.username}
 								</i>
-								<h6 className="date">
-									{timeAgo(d.posted_date)}
-								</h6>
+								<h6 className="date">{timeAgo(d.datum)}</h6>
 								<span className="email">{d.email}</span>
 							</div>
 							<h2 className="videoTitle">{d.body}</h2>
