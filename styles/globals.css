@@ -5,6 +5,7 @@
 	--fr: #313638;
 	--main: #f7be89;
 	--sec: #f06543;
+	--sec: #9e412a;
 	--red: #df1253;
 	--white: rgb(247, 245, 240);
 	--black: rgb(13, 13, 15);
@@ -367,6 +368,15 @@ a {
 	z-index: 1;
 	background-color: var(--black);
 	margin: 0.5vw;
+}
+.bigVid {
+	position: fixed;
+	top: 25%;
+	left: 50%;
+	transform: translate(-50%, 0);
+	z-index: 9999;
+}
+div:not(.bigVid):hover {
 }
 .videoTitle {
 	margin: 0.55rem;

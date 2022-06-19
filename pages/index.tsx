@@ -9,6 +9,10 @@ const Home: NextPage = () => {
 	const [hasAccount, setHasAccount] = useState(false);
 	const [data, setData] = useState([]);
 	const [postModal, setPostModal] = useState(false);
+	const [userEmail, setUserEmail] = useState("");
+	const [bigVid, setBigVid] = useState(false);
+
+	function deletePost(id: Number) {}
 
 	const serverDomain =
 		process.env.NODE_ENV === "development"
@@ -16,6 +20,7 @@ const Home: NextPage = () => {
 			: process.env.NEXT_PUBLIC_SERVERDOMAIN;
 
 	useEffect(() => {
+		setUserEmail(`${localStorage.getItem("email")}`);
 		async function getBlogs() {
 			try {
 				const response = await fetch(serverDomain + "posts");
@@ -92,7 +97,10 @@ const Home: NextPage = () => {
 								<span className="email">{d.email}</span>
 							</div>
 							<h2 className="videoTitle">{d.body}</h2>
-							<div className="video">
+							<div
+								onMouseOver={() => setBigVid(d.video_id)}
+								className="video"
+							>
 								<ReactPlayer
 									width={288}
 									height={162}
@@ -100,13 +108,29 @@ const Home: NextPage = () => {
 									controls
 								/>
 							</div>
-							<Image
-								onClick={() => deletePost(d.id)}
-								className="trash"
-								width={30}
-								height={30}
-								src={trash}
-							></Image>
+							{bigVid === d.video_id && (
+								<div
+									onMouseOver={() => setBigVid(d.video_id)}
+									onMouseLeave={() => setBigVid(false)}
+									className="bigVid"
+								>
+									<ReactPlayer
+										width={864}
+										height={486}
+										url={d.video_id}
+										controls
+									/>
+								</div>
+							)}
+							{d.email === userEmail && (
+								<Image
+									onClick={() => deletePost(d.id)}
+									className="trash"
+									width={30}
+									height={30}
+									src={trash}
+								></Image>
+							)}
 						</div>
 					);
 				})}

@@ -43,7 +43,7 @@ function Nav() {
 		document.documentElement.style.setProperty("--fr", "#e8e9eb");
 		document.documentElement.style.setProperty("--black", "white");
 		document.documentElement.style.setProperty("--main", "#f06543");
-		document.documentElement.style.setProperty("--sec", "#f06543");
+		document.documentElement.style.setProperty("--sec", "#9e412a");
 		document.documentElement.style.setProperty("--bgSec", "#7a531c");
 
 		document.documentElement.style.setProperty("--bgDark", "#2e2321");
