@@ -375,8 +375,19 @@ a {
 	left: 50%;
 	transform: translate(-50%, 0);
 	z-index: 9999;
+	animation: bigger 1s;
+	background-color: var(--black);
 }
-div:not(.bigVid):hover {
+@keyframes bigger {
+	0% {
+		margin: 0vw;
+	}
+	50% {
+		margin: 0.5vw;
+	}
+	100% {
+		margin: 0%;
+	}
 }
 .videoTitle {
 	margin: 0.55rem;
