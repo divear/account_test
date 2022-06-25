@@ -376,7 +376,7 @@ a {
 	top: 25%;
 	left: 50%;
 	transform: translate(-50%, 0);
-	z-index: 9999;
+	z-index: 3;
 	animation: move 0.5s;
 	background-color: var(--black);
 }

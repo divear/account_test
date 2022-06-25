@@ -107,6 +107,7 @@ const Home: NextPage = () => {
 									url={d.video_id}
 								/>
 							</div>
+
 							{bigVid === d.video_id && (
 								<div
 									onMouseOver={() => setBigVid(d.video_id)}
