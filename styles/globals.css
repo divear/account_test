@@ -235,7 +235,8 @@ a {
 	background-color: var(--bgDark);
 	color: var(--white);
 	border-radius: 2vw;
-	padding: 1vw;
+	padding: 0 5vw;
+	font-size: 1.5rem;
 	display: inline;
 	animation: slideMiddle 1s;
 }
@@ -275,6 +276,7 @@ a {
 }
 #usernameInput {
 	font-size: 2rem !important;
+	margin: 1vw 0;
 }
 
 .usernameInput {

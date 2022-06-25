@@ -105,7 +105,6 @@ const Home: NextPage = () => {
 									width={288}
 									height={162}
 									url={d.video_id}
-									controls
 								/>
 							</div>
 							{bigVid === d.video_id && (

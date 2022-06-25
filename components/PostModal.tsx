@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { ref, getStorage, uploadBytes } from "./firebase.js";
-import spinner from "./imgs/spinner.gif"
+import spinner from "./imgs/spinner.gif";
 import Image from "next/image";
 
-const isWeb = typeof window !== "undefined";
-
 function PostModal() {
-	const [videoLink, setVideoLink] = useState("")
+	const [videoLink, setVideoLink] = useState("");
 	const serverDomain =
 		process.env.NODE_ENV === "development"
 			? "http://localhost:4000/"
@@ -14,45 +12,31 @@ function PostModal() {
 	const [body, setBody] = useState("");
 	const [id, setId] = useState(0);
 	const [errorCode, setErrorCode] = useState("");
-	const [isLoading, setIsLoading] = useState(false)
-	let link : String
+	const [isLoading, setIsLoading] = useState(false);
+	let link: String;
 	useEffect(() => {
 		setId(Number(`${localStorage.getItem("id")}`));
 	}, []);
 
-	
 	const storage = getStorage();
 	console.log(`${serverDomain}posts`);
-	
-
-
-	
 	function changeImg(e: any) {
 		let tempVid = e.target.files[0];
-		
-		
 
 		//make url friendly
 		const friendlyUrlName = e.target.files[0].name
 			.replace(/[^.,a-zA-Z1-9]/g, "")
 			.toLowerCase();
-		
 
-		const tempVidLink =`https://firebasestorage.googleapis.com/v0/b/accounts-8a8bf.appspot.com/o/video%2F${friendlyUrlName}?alt=media` 
-		setVideoLink(tempVidLink)
-		link = tempVidLink  
-		
-		
+		const tempVidLink = `https://firebasestorage.googleapis.com/v0/b/accounts-8a8bf.appspot.com/o/video%2F${friendlyUrlName}?alt=media`;
+		setVideoLink(tempVidLink);
+		link = tempVidLink;
 
 		const spaceRef = ref(storage, `video/${tempVid && friendlyUrlName}`);
 
-
-
-
-		
-		setIsLoading(true)
+		setIsLoading(true);
 		uploadBytes(spaceRef, tempVid).then(async (snapshot) => {
-			submit(e)
+			submit(e);
 		});
 	}
 
@@ -66,20 +50,18 @@ function PostModal() {
 		(async function () {
 			const Rid = { id };
 			const Rbody = { body };
-			const Rvid = {link}
-			
+			const Rvid = { link };
 
 			const arr = [Rid, Rbody, Rvid];
 			console.log(arr);
-			
-			
+
 			const response = await fetch(`${serverDomain}posts`, {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(arr),
 			});
 			console.log("posted");
-			
+
 			window.location.reload();
 		})();
 	}
@@ -105,14 +87,16 @@ function PostModal() {
 					value={body}
 					onChange={(e) => setBody(e.target.value)}
 					autoFocus
+					placeholder="My cool video"
 				/>
 				<br />
-				<label htmlFor="video">Video:</label>
+				<label htmlFor="video">Video source:</label>
 				<br />
 				<input
 					type="file"
 					onChange={(e) => changeImg(e)}
-					accept="video/*" />
+					accept="video/*"
+				/>
 				<br />
 				<h3>{errorCode}</h3>
 				<div className={isLoading ? "" : "no"}>
