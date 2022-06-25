@@ -115,6 +115,7 @@ const Home: NextPage = () => {
 									className="bigVid"
 								>
 									<ReactPlayer
+										onEnded={() => setBigVid(false)}
 										width={864}
 										height={486}
 										url={d.video_id}

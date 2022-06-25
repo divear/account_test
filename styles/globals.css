@@ -375,15 +375,15 @@ a {
 	left: 50%;
 	transform: translate(-50%, 0);
 	z-index: 9999;
-	animation: bigger 1s;
+	animation: move 0.5s;
 	background-color: var(--black);
 }
-@keyframes bigger {
+@keyframes move {
 	0% {
 		margin: 0vw;
 	}
 	50% {
-		margin: 0.5vw;
+		margin: 0.2vw;
 	}
 	100% {
 		margin: 0%;
