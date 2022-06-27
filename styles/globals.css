@@ -208,7 +208,7 @@ a {
 /* main page post */
 .posts {
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(4, 1fr);
 	gap: 10px;
 	width: 100%;
 }
@@ -365,8 +365,7 @@ a {
 	padding: 1vw;
 }
 .video {
-	border-radius: 1vw 1vw 1vw 1vw;
-	overflow: hidden;
+	border-radius: 1vw;
 	z-index: 1;
 	background-color: var(--black);
 	margin: 0.5vw;
