@@ -365,6 +365,7 @@ a {
 	padding: 1vw;
 }
 .video {
+	cursor: pointer;
 	border-radius: 1vw;
 	z-index: 1;
 	background-color: var(--black);

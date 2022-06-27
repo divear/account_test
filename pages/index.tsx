@@ -97,11 +97,9 @@ const Home: NextPage = () => {
 								<span className="email">{d.email}</span>
 							</div>
 							<h2 className="videoTitle">{d.body}</h2>
-							<div
-								onMouseOver={() => setBigVid(d.video_id)}
-								className="video"
-							>
+							<div className="video">
 								<ReactPlayer
+									onClick={() => setBigVid(d.video_id)}
 									width={288}
 									height={162}
 									url={d.video_id}
