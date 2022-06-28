@@ -60,6 +60,11 @@ const Home: NextPage = () => {
 
 		return getRelativeTime(+new Date(time));
 	}
+	function waitAndExit() {
+		setTimeout(() => {
+			setBigVid(false);
+		}, 500);
+	}
 
 	return (
 		<div className="content ">
@@ -109,7 +114,7 @@ const Home: NextPage = () => {
 							{bigVid === d.video_id && (
 								<div
 									onMouseOver={() => setBigVid(d.video_id)}
-									onMouseLeave={() => setBigVid(false)}
+									onMouseLeave={() => waitAndExit()}
 									className="bigVid"
 								>
 									<ReactPlayer

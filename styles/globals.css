@@ -379,6 +379,8 @@ a {
 	z-index: 3;
 	animation: move 0.5s;
 	background-color: var(--black);
+	background-color: rebeccapurple;
+	padding: 5vw;
 }
 @keyframes move {
 	0% {
@@ -388,7 +390,7 @@ a {
 		margin: 0.2vw;
 	}
 	100% {
-		margin: 0%;
+		margin: 0.1vw;
 	}
 }
 .videoTitle {
