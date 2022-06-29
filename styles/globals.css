@@ -378,8 +378,6 @@ a {
 	transform: translate(-50%, 0);
 	z-index: 3;
 	animation: move 0.5s;
-	background-color: var(--black);
-	background-color: rebeccapurple;
 	padding: 5vw;
 }
 @keyframes move {

@@ -118,6 +118,7 @@ const Home: NextPage = () => {
 									className="bigVid"
 								>
 									<ReactPlayer
+										playing={true}
 										onEnded={() => setBigVid(false)}
 										width={864}
 										height={486}
