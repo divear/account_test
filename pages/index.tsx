@@ -12,7 +12,13 @@ const Home: NextPage = () => {
 	const [userEmail, setUserEmail] = useState("");
 	const [bigVid, setBigVid] = useState(false);
 
-	function deletePost(id: Number) {}
+	async function deletePost(id: Number) {
+		const response = await fetch(`${serverDomain}posts/${id}`, {
+			method: "DELETE",
+			headers: { "Content-Type": "application/json" },
+		});
+		window.location.reload();
+	}
 
 	const serverDomain =
 		process.env.NODE_ENV === "development"
