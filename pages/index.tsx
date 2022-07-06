@@ -1,9 +1,10 @@
 import type { NextPage } from "next";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import PostModal from "../components/PostModal";
 import ReactPlayer from "react-player";
 import Image from "next/image";
 import trash from "../components/imgs/trash.png";
+import useOutsideClick from "../components/useOutsideClick";
 
 const Home: NextPage = () => {
 	const [hasAccount, setHasAccount] = useState(false);
@@ -11,6 +12,12 @@ const Home: NextPage = () => {
 	const [postModal, setPostModal] = useState(false);
 	const [userEmail, setUserEmail] = useState("");
 	const [bigVid, setBigVid] = useState(false);
+
+	const ref: any = useRef();
+
+	useOutsideClick(ref, () => {
+		bigVid && setBigVid(false);
+	});
 
 	async function deletePost(id: Number) {
 		const response = await fetch(`${serverDomain}posts/${id}`, {
@@ -41,7 +48,6 @@ const Home: NextPage = () => {
 	}, []);
 
 	function timeAgo(time: any) {
-		// in miliseconds
 		var units: any = {
 			year: 24 * 60 * 60 * 1000 * 365,
 			month: (24 * 60 * 60 * 1000 * 365) / 12,
@@ -73,7 +79,7 @@ const Home: NextPage = () => {
 	}
 
 	return (
-		<div className="content ">
+		<div className="content">
 			<div className={postModal ? "postModal" : "hidePostModal"}>
 				<PostModal />
 			</div>
@@ -117,8 +123,19 @@ const Home: NextPage = () => {
 								/>
 							</div>
 
+							{d.email === userEmail && (
+								<Image
+									onClick={() => deletePost(d.id)}
+									className="trash"
+									width={30}
+									height={30}
+									src={trash}
+								></Image>
+							)}
+
 							{bigVid === d.video_id && (
 								<div
+									ref={ref}
 									onMouseOver={() => setBigVid(d.video_id)}
 									onMouseLeave={() => waitAndExit()}
 									className="bigVid"
@@ -132,15 +149,6 @@ const Home: NextPage = () => {
 										controls
 									/>
 								</div>
-							)}
-							{d.email === userEmail && (
-								<Image
-									onClick={() => deletePost(d.id)}
-									className="trash"
-									width={30}
-									height={30}
-									src={trash}
-								></Image>
 							)}
 						</div>
 					);
