@@ -61,12 +61,12 @@ function Nav() {
 				</svg>
 			</div>
 
-			<a href="/">
+			<Link href="/">
 				<h1 className="navText">
 					<Image width={50} height={50} className="logo" src={logo} />
 					Postine
 				</h1>
-			</a>
+			</Link>
 
 			<div className={modal ? "um userModal" : "um hideUserModal"}>
 				<AccountModal />
