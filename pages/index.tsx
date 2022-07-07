@@ -72,11 +72,6 @@ const Home: NextPage = () => {
 
 		return getRelativeTime(+new Date(time));
 	}
-	function waitAndExit() {
-		setTimeout(() => {
-			setBigVid(false);
-		}, 500);
-	}
 
 	return (
 		<div className="content">
@@ -137,7 +132,6 @@ const Home: NextPage = () => {
 								<div
 									ref={ref}
 									onMouseOver={() => setBigVid(d.video_id)}
-									onMouseLeave={() => waitAndExit()}
 									className="bigVid"
 								>
 									<ReactPlayer
